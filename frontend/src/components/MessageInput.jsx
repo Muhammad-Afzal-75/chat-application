@@ -164,7 +164,7 @@ const startRecording = async () => {
 
           <button
             type="button"
-            className={`hidden sm:flex btn btn-circle
+            className={`btn btn-circle
                      ${imagePreview ? "text-emerald-500" : "text-zinc-400"}`}
             onClick={() => fileInputRef.current?.click()}
           >
@@ -173,7 +173,7 @@ const startRecording = async () => {
           
           <button
             type="button"
-            className={`hidden sm:flex btn btn-circle
+            className={`btn btn-circle
                      ${isRecording ? "text-red-500 animate-pulse" : "text-zinc-400"}`}
             onClick={isRecording ? stopRecording : startRecording}
           >

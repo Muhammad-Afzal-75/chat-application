@@ -49,6 +49,19 @@ export const useChatStore = create((set, get) => ({
     }
   },
 
+  deleteMessage: async (messageId) => {
+    const { messages } = get();
+    try {
+      await axiosInstance.delete(`/messages/${messageId}`);
+      // Remove the deleted message from the messages array
+      set({ messages: messages.filter(message => message._id !== messageId) });
+    } catch (error) {
+      console.log("Error deleting message:", error);
+      const errorMessage = error.response?.data?.message || error.message || "Failed to delete message";
+      toast.error(errorMessage);
+    }
+  },
+
   subscribeToMessages: () => {
     const { selectedUser } = get();
     if (!selectedUser) return;
